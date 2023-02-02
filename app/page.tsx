@@ -1,4 +1,4 @@
-// import PocketBase from 'pocketbase';
+import PocketBase from 'pocketbase';
 import Link from 'next/link';
 import styles from './Notes.module.css';
 import CreateNote from './CreateNote';
@@ -12,11 +12,13 @@ import CreateNote from './CreateNote';
 
 
 async function getNotes() {
-  // const db = new PocketBase('http://127.0.0.1:8090');
-  // const result = await db.records.getList('notes');
-  const res = await fetch('http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30', { cache: 'no-store' });
-  const data = await res.json();
-  return data?.items as any[];
+  const db = new PocketBase('http://127.0.0.1:8090');
+  const result = await db.records.getList('notes');
+  return result?.items as any[];
+
+  // const res = await fetch('http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30', { cache: 'no-store' });
+  // const data = await res.json();
+  // return data?.items as any[];
 }
 
 export default async function NotesPage() {
@@ -40,7 +42,7 @@ function Note({ note }: any) {
   const { id, title, content, created } = note || {};
 
   return (
-    <Link href={`/notes/${id}`}>
+    <Link href={`${id}`}>
       <div className={styles.note}>
         <h2>{title}</h2>
         <h5>{content}</h5>
