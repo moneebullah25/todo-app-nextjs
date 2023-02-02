@@ -1,5 +1,12 @@
-import PocketBase from 'pocketbase';
+// 'use client';
+
+// import PocketBase from 'pocketbase';
 import styles from '../Notes.module.css';
+
+// async function deleteNote({ noteid }: any) {
+//     const db = new PocketBase('http://127.0.0.1:8090');
+//     await db.records.delete("notes", noteid)
+// }
 
 async function getNote(noteId: string) {
   const res = await fetch(
@@ -28,6 +35,14 @@ export default async function NotePage({ params }: any) {
         <h5>{note.content}</h5>
         <p>{note.created}</p>
       </div>
+      <br />
+      {/* <div>
+        <button onClick={() => {
+          deleteNote(params.id);
+
+          }
+        }>Delete Note</button>
+      </div> */}
     </div>
   );
 }
