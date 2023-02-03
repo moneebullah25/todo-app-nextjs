@@ -29,3 +29,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Deployed on Vercel
 
 [todo-application](https://todo-app-nextjs-nine.vercel.app/)
+
+## Error in Deployment
+
+1. Clone the respository
+2. In the project directory first run
+`./pocketbase.exe serve`
+3. Then run the server to interact with the application
+`npm run dev`
